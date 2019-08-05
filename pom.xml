@@ -37,7 +37,9 @@
 				<configuration>
 					<!-- By default, it also deploys, so overrode it with install goal -->
 					<goals>install</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
+				
 			</plugin>
 		</plugins>
 	</build>
