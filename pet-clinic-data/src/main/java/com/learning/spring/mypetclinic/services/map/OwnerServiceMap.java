@@ -12,7 +12,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
 	@Override
 	public Owner save(Owner object) {
-		return save(object.getId(), object);
+		return super.save(object);
 	}
 
 	@Override
@@ -24,12 +24,6 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 	public Owner findById(Long id) {
 		return super.findById(id);
 	}
-
-	@Override
-	public Owner save(Long id, Owner object) {
-		return super.save(id, object);
-	}
-
 	@Override
 	public void deleteById(Long id) {
 		super.deleteById(id);

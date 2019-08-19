@@ -8,12 +8,7 @@ import com.learning.spring.mypetclinic.model.Vet;
 import com.learning.spring.mypetclinic.services.VetService;
 
 @Service
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService{
-
-	@Override
-	public Vet save(Vet object) {
-		return save(object.getId(), object);
-	}
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
 	@Override
 	public Set<Vet> findAll() {
@@ -26,8 +21,8 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 	}
 
 	@Override
-	public Vet save(Long id, Vet object) {
-		return super.save(id, object);
+	public Vet save(Vet object) {
+		return super.save(object);
 	}
 
 	@Override
@@ -39,5 +34,5 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 	public void delete(Vet object) {
 		super.delete(object);
 	}
-	
+
 }
