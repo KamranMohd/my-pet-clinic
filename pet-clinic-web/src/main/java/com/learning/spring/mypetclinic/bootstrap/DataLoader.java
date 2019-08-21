@@ -1,9 +1,12 @@
 package com.learning.spring.mypetclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.learning.spring.mypetclinic.model.Owner;
+import com.learning.spring.mypetclinic.model.Pet;
 import com.learning.spring.mypetclinic.model.PetType;
 import com.learning.spring.mypetclinic.model.Vet;
 import com.learning.spring.mypetclinic.services.OwnerService;
@@ -31,21 +34,41 @@ public class DataLoader implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		PetType dog = new PetType();
 		dog.setName("Dog");
-		petTypeService.save(dog);
+		PetType savedDogPetType = petTypeService.save(dog);
 		
 		PetType cat = new PetType();
 		dog.setName("Cat");
-		petTypeService.save(cat);
+		PetType savedCatPetType = petTypeService.save(cat);
 		
 		
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Mohd");
 		owner1.setLastName("Kamran");
+		owner1.setAddress("SuperTech Capetown");
+		owner1.setCity("Noida");
+		owner1.setTelephone("9654747357");
+		
+		Pet kamransPet = new Pet();
+		kamransPet.setPetType(savedDogPetType);
+		kamransPet.setOwner(owner1);
+		kamransPet.setBirthDate(LocalDate.now());
+		kamransPet.setName("Rosco");
+		owner1.getPets().add(kamransPet);
 		ownerService.save(owner1);
 
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Mohit");
 		owner2.setLastName("Singh");
+		owner2.setAddress("Gomti Nagar");
+		owner2.setCity("Lucknow");
+		owner2.setTelephone("9458886332");
+		
+		Pet mohitsPet = new Pet();
+		mohitsPet.setPetType(savedCatPetType);
+		mohitsPet.setOwner(owner2);
+		mohitsPet.setBirthDate(LocalDate.now());
+		mohitsPet.setName("Ruhi");
+		owner2.getPets().add(mohitsPet);
 		ownerService.save(owner2);
 		
 		Owner owner3 = new Owner();
