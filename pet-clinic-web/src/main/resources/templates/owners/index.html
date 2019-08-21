@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
 <meta charset="UTF-8">
 <title>Spring Pet Clinic</title>
@@ -7,19 +8,24 @@
 <body>
 	<!-- Since, Index page is not an expression, we will have to
 	surround it with single quotes -->
-	<h2 th:text="'List of owners'">List of owners...</h2>
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-		</tr>
-		<tr th:each="owner : ${owners}">
-			<td th:text="${owner.id}"></td>
-			<td th:text="${owner.firstName}"></td>
-			<td th:text="${owner.lastName}"></td>
-		</tr>
+	<h2>Owners</h2>
+
+	<table id="owners" class="table table-striped">
+		<thead>
+			<tr>
+				<th style="width: 150px;">ID</th>
+				<th style="width: 150px;">First Name</th>
+				<th style="width: 150px;">Last Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="owner : ${owners}">
+				<td th:text="${owner.id}"></td>
+				<td th:text="${owner.firstName}"></td>
+				<td th:text="${owner.lastName}"></td>
+			</tr>
+		</tbody>
 	</table>
-	
+
 </body>
 </html>
