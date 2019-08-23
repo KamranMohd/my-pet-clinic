@@ -10,10 +10,12 @@ import com.learning.spring.mypetclinic.model.Pet;
 import com.learning.spring.mypetclinic.model.PetType;
 import com.learning.spring.mypetclinic.model.Speciality;
 import com.learning.spring.mypetclinic.model.Vet;
+import com.learning.spring.mypetclinic.model.Visit;
 import com.learning.spring.mypetclinic.services.OwnerService;
 import com.learning.spring.mypetclinic.services.PetTypeService;
 import com.learning.spring.mypetclinic.services.SpecialityService;
 import com.learning.spring.mypetclinic.services.VetService;
+import com.learning.spring.mypetclinic.services.VisitService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -22,15 +24,17 @@ public class DataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
+	private final VisitService visitService;
 	
-
+		
 	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-			SpecialityService specialityService) {
+			SpecialityService specialityService, VisitService visitService) {
 		super();
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
 
 
@@ -94,6 +98,12 @@ public class DataLoader implements CommandLineRunner {
 		mohitsPet.setName("Ruhi");
 		owner2.getPets().add(mohitsPet);
 		ownerService.save(owner2);
+		
+		Visit catVisit = new Visit();
+		catVisit.setPet(mohitsPet);
+		catVisit.setDescription("Mohit's Cat");
+		catVisit.setDate(LocalDate.now());
+		visitService.save(catVisit);
 		
 		Owner owner3 = new Owner();
 		owner3.setFirstName("Shubhra");
