@@ -11,7 +11,7 @@ import com.learning.spring.mypetclinic.model.repositories.VetRepository;
 import com.learning.spring.mypetclinic.services.VetService;
 
 @Service
-@Profile("springdatajpoa")
+@Profile("springdatajpa")
 public class VetSDJpaService implements VetService{
 	
 	private final VetRepository vetRepository;
